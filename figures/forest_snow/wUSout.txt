@@ -1,0 +1,13 @@
+wUS Total Forest SWE: 8627716.02 km3 
+Forest SWE 2 degrees and above: 100.0 % 
+Forest SWE 4 degrees and above: 98.0 % 
+Forest SWE 6 degrees and above: 95.0 % 
+Forest SWE 8 degrees and above: 90.0 % 
+Forest SWE 10 degrees and above: 83.0 % 
+Forest SWE 12 degrees and above: 73.0 % 
+Forest SWE 14 degrees and above: 64.0 % 
+Forest SWE 16 degrees and above: 54.0 % 
+Forest SWE 18 degrees and above: 43.0 % 
+Forest SWE 20 degrees and above: 32.0 % 
+Forest SWE 22 degrees and above: 21.0 % 
+Forest SWE 24 degrees and above: 13.0 % 

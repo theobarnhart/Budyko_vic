@@ -1,0 +1,5 @@
+rc	ecoregion
+1	"11_1_1" 
+2	"middle rockies"
+3	"wasatch uinta"
+4	"southern rockies"

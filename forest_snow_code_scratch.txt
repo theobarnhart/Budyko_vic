@@ -1,0 +1,51 @@
+# crop aligned 
+
+gdalwarp -tr 0.0625 0.0625 -overwrite -tap -cutline /Volumes/data/projects/Budyko_vic/data/conus_boundary/conus_boundary.shp -crop_to_cutline conus_1_16_cart_canopy_align.tif conus_1_16_cart_canopy_align_crop.tif
+
+gdalwarp -overwrite conus_forest_canopy/CONUSCartographic_2_8_16/Cartographic/conus_1_16_cart_canopy_align_crop.tif simulation_conus_crop.tif simulation_conus_crop_aligned.tif
+
+gdalwarp -te -124.762 24.5452 -66.9578 49.3717 simulation_conus.tif simulation_conus_rect.tif
+
+gdalwarp -multi -overwrite -wm 500 -t_srs '+init=epsg:5070' conus_90m.vrt conus_90m_proj.tif
+
+gdalwarp -multi -overwrite -wm 500 -t_srs '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs' -tr 0.0625 0.0625 -tap -te -124.762 24.5452 -66.9578 49.3717 -r average conus_90m_proj_slope.tif conus_1_16_proj_slope.tif
+
+
+# compute swe in a variety of scenarios
+forestpercent = 10
+
+# SWE in the forest
+swe = dat.copy()
+swe[longs>-100]=np.nan
+swe[can<forestpercent] = np.nan
+swe[np.isnan(swe)]=-10
+swe = ma.masked_less(swe,0)
+m,n = swe.shape
+tmp = np.reshape(swe,m*n)
+tmp = tmp[tmp>0]
+
+area = len(tmp) * (6.*6.)
+
+# compute swe in a variety of scenarios just for the western us
+forestpercent = 10
+slopes = np.arange(10,90,10)
+
+# SWE in the forest
+swe = dat.copy()
+swe[longs>-100] = np.nan
+swe[can<forestpercent] = np.nan
+forest_swe = np.nansum(swe) # mm
+forest_swe /= 10 # cm
+forest_swe /= 100 # m
+forest_swe /= 1000 #km
+
+print 'wUS Total Forest SWE: '+str(round(forest_swe*area,2))+' km3'
+for slp in slopes:
+    
+    # SWE in forest and slopes greater than 10 degrees
+    swe = dat.copy()
+    swe[longs>-100] = np.nan
+    swe[can<forestpercent] = np.nan # mask non forest
+    swe[slope<slp] = np.nan
+    slpswe = np.nansum(swe)
+    print 'Forest SWE '+str(slp)+' degrees and above: '+str(round(slpswe/forest_swe,2)*100)+' %'

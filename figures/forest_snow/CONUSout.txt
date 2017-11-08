@@ -1,0 +1,13 @@
+CONUS Total Forest SWE: 43494288.1 km3 
+Forest SWE 2 degrees and above: 91.0 % 
+Forest SWE 4 degrees and above: 81.0 % 
+Forest SWE 6 degrees and above: 74.0 % 
+Forest SWE 8 degrees and above: 67.0 % 
+Forest SWE 10 degrees and above: 60.0 % 
+Forest SWE 12 degrees and above: 53.0 % 
+Forest SWE 14 degrees and above: 45.0 % 
+Forest SWE 16 degrees and above: 38.0 % 
+Forest SWE 18 degrees and above: 30.0 % 
+Forest SWE 20 degrees and above: 23.0 % 
+Forest SWE 22 degrees and above: 15.0 % 
+Forest SWE 24 degrees and above: 9.0 % 
